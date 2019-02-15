@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Register to Get It Done!</h1>
+<form action="/register" method="post">
+    <table>
+        <tr>
+            <td><label for="email">Email</label></td>
+            <td>
+                <input name="email" type="email" value="{{ email }}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="password">Password</label>
+            </td>
+            <td>
+                <input name="password" type="password">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="verify">Verify Password</label></td>
+            <td>
+                <input name="verify" type="password">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Register">
+    
+        <input type="text" id="new-username" name="new-username" value="{{new_username}}" />
+        <span class="error">{{username_error}}</span>
+        <br>
+        Password
+        <input id="new-password" type="password" name="new-password" value="{{new_password}}" />
+        <span class="error">{{password_error}}</span>
+        <br>
+        Verify Password
+        <input id="match-password" type="password" name="match-password" value="{{match_password}}" />
+        <span class="error">{{match_error}}</span>
+        <br>
+        Email (Optional)
+        <input type="text" name="register-email"/>
+
+    </fieldset>
+    <br>
+    <input type="submit" value="Submit"/>
+</form>
+
+
+{% if error %}
+  <p class='error'>{{ error }}</p>
+{% endif %}
+{% endblock %}
