@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block content %}
 
+{% block content %}
 <h1>Register to Get It Done!</h1>
 <form action="/register" method="post">
     <table>
@@ -26,24 +26,6 @@
         </tr>
     </table>
     <input type="submit" value="Register">
-    
-        <input type="text" id="new-username" name="new-username" value="{{new_username}}" />
-        <span class="error">{{username_error}}</span>
-        <br>
-        Password
-        <input id="new-password" type="password" name="new-password" value="{{new_password}}" />
-        <span class="error">{{password_error}}</span>
-        <br>
-        Verify Password
-        <input id="match-password" type="password" name="match-password" value="{{match_password}}" />
-        <span class="error">{{match_error}}</span>
-        <br>
-        Email (Optional)
-        <input type="text" name="register-email"/>
-
-    </fieldset>
-    <br>
-    <input type="submit" value="Submit"/>
 </form>
 
 
