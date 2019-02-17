@@ -29,6 +29,12 @@ class User(db.Model):
         self.password = password
 
 
+@app.before_request
+def require_login():
+    if 'email' not in session:
+        return redirect('/login')
+
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -69,6 +75,10 @@ def register():
         
     return render_template('register.html')
 
+@app.route('/logout')
+def logout():
+    del session['email']
+    return redirect('/')
 
 
 @app.route('/', methods=['POST', 'GET'])
