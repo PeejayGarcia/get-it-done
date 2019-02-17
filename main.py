@@ -6,6 +6,7 @@ app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://get-it-done:lc101@localhost:8889/get-it-done'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
+app.secret_key = 'xTheseHosAintLoyalx'
 
 class Task(db.Model): 
 
@@ -31,7 +32,8 @@ class User(db.Model):
 
 @app.before_request
 def require_login():
-    if 'email' not in session:
+    allowed_routes = ['login', 'register']
+    if request.endpoint not in allowed_routes and 'email' not in session:
         return redirect('/login')
 
 
